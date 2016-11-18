@@ -5,7 +5,7 @@ var router = express.Router();
  * 请求父路径：/blog
  */
 router.get('/', function(req, res, next) {
-  res.render('./jade/index',{ title: 'Blog',name:"zhangsan" });
+  res.render('blog/blog', { });
 });
 router.post('/', function(req, res, next) {
   res.render('index', { title: 'Blog',name:"zhangsan" });

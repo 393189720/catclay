@@ -14,6 +14,7 @@ var pkg = require('./package');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var blog = require('./routes/posts');
+var laugh = require('./routes/laugh');
 
 var app = express();
 
@@ -48,6 +49,7 @@ app.use(flash());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/blog', blog);
+app.use('/laugh', laugh);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
