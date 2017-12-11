@@ -1,3 +1,6 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 var UserSchema = new Schema({
     //--基本用户信息， index表示在mongodb中会建立索引
     //--unique: true 唯一性设置

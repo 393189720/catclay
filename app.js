@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+
 var index = require('./app/routes/index');
 var login = require('./app/routes/login');
 var users = require('./app/routes/users');
@@ -28,6 +30,9 @@ app.use('/', index);
 app.use('/login', login);
 app.use('/users', users);
 app.use('/task', task);
+
+//数据库连接
+mongoose.connect("mongodb://localhost:27017/catclay");
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
