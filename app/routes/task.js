@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a  task resource');
+  res.render('task/task',{ title: '任务' });
 });
 
 module.exports = router;

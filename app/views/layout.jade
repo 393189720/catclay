@@ -1,0 +1,10 @@
+doctype html
+html(lang='zh-CN')
+  head
+    title #{title}
+    include header
+  body
+    div(class='row col-sm-2')
+      include ./navigator
+    div(class='row col-sm-10')
+      block content
