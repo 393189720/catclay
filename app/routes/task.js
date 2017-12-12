@@ -6,42 +6,52 @@ var taskModel = require('../models/taskModel');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  taskNoticeModel.find(function (err, taskNotice) {
+  taskNoticeModel.findOne(function (err, docs) {
     if (err) {
         return console.error(err);
     }else {
-      console.log('taskNotice===' + taskNotice[0].content);
+      console.log('docs:' + docs[0].string);
       res.render('task/task',{notice:taskNotice[0].content});
     }
   });
 
 });
 
-/* GET users listing. */
+/* post notice listing. */
 router.post('/notice/add', function(req, res, next) {
-  // var taskNoticeEntity = new taskNoticeModel({
-  //   content:"aaaaaaaaaaaabbbbbb"
-  // });
-  // taskNoticeEntity.save(function(err, docs){
-  //   if(err) console.log(err);
-  //   console.log('保存成功：' + docs);
-  // })
 
-  //5a2f7433a06d19f64a19b1eb
-  taskNoticeModel.update({title:'notice'},{content:req.body.notice},function (err, docs){
-    if(err) console.log(err);
-      console.log('保存成功：' + docs);
-  });
+    var taskNoticeEntity = new taskNoticeModel({
+        title:'notice',
+        content:req.body.notice
+    });
 
-  // taskNoticeModel.find(function (err, taskNotice) {
-  //   if (err) {
-  //     return console.error(err);
-  //   }else {
-  //     console.log('res===' + taskNotice.title);
-  //   }
-  // });
-  //
-  // res.render('admin',{ title: 'glhy' });
+    taskNoticeEntity.save(function (err, docs){
+        if(err) console.log(err);
+        console.log('保存成功：' + docs);
+        res.send('发布成功！');
+    });
+    // taskNoticeModel.update({title:'notice'},taskNoticeEntity,function (err, docs){
+    //     if(err) console.log(err);
+    //     console.log('保存成功：' + docs);
+    //     res.send('发布成功！');
+    // });
 });
+
+/* post notice listing. */
+router.post('/add', function(req, res, next) {
+
+    var taskEntity = new taskModel({
+        title:req.body.title,
+        content:req.body.content
+    });
+
+    taskEntity.save(function (err, docs){
+        if(err) console.log(err);
+        console.log('保存成功：' + docs);
+        res.send('发布成功！');
+    });
+});
+
+
 
 module.exports = router;
