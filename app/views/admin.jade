@@ -1,0 +1,12 @@
+//Created by clay on 2017/12/11.
+doctype html
+html(lang='zh-CN')
+  head
+    title #{title}
+    include header
+  body
+    div(class='container')
+      form(action='/task/notice/add' method='post')
+        h3 编辑公告
+        textarea(type='text',name='notice',class='form-control',rows='3')
+        button(type='submit',class='btn btn-primary active') 提交

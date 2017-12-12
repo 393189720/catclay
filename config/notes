@@ -1,0 +1,4 @@
+1.mongodb数据库集合注意点
+mongoose中schema对应的mongodb中的集合为全部小写加’s‘;
+for example:
+    schema:taskNoticeSchema-->collection:tasknotices

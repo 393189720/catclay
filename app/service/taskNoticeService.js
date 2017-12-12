@@ -1,7 +1,6 @@
 /**
  * Created by clay on 2017/12/11.
  */
-var taskNoticeDao = require('../schema/TaskNoticeSchema');
 
 /**
  * 公共find方法 非关联查找
