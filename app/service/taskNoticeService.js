@@ -1,6 +1,19 @@
 /**
  * Created by clay on 2017/12/11.
  */
+var taskNoticeModel = require('../models/taskNoticeModel');
+
+exports.findTaskNotice = function(){
+  taskNoticeModel.findOne(function (err, docs) {
+    if (err) {
+      return console.error(err);
+    }else {
+      console.log('docs:' + docs.content);
+      return docs;
+    }
+  });
+};
+
 
 /**
  * 公共find方法 非关联查找

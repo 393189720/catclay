@@ -1,19 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var taskNoticeController = require('../controller/taskNoticeController');
-var taskNoticeModel = require('../models/taskNoticeModel');
-var taskModel = require('../models/taskModel');
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  taskNoticeModel.findOne(function (err, docs) {
-    if (err) {
-        return console.error(err);
-    }else {
-      console.log('docs:' + docs[0].string);
-      res.render('task/task',{notice:taskNotice[0].content});
-    }
-  });
+  var tt = taskNoticeController.taskNotice();
+  res.render('task/task',tt);
+  // taskNoticeModel.findOne(function (err, docs) {
+  //   if (err) {
+  //       return console.error(err);
+  //   }else {
+  //     console.log('docs:' + docs[0].string);
+  //     res.render('task/task',{notice:taskNotice[0].content});
+  //   }
+  // });
 
 });
 

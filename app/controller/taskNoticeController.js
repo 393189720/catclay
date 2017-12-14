@@ -3,6 +3,7 @@
  */
 var taskNoticeService = require('../service/taskNoticeService');
 
-var index = function (req,res) {
-
+exports.taskNotice = function(){
+  var taskNotice = taskNoticeService.findTaskNotice();
+  return taskNotice;
 };
