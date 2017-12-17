@@ -10,7 +10,6 @@ var mongoose = require('mongoose');
 var index = require('./app/routes/index');
 var admin = require('./app/routes/admin');
 var login = require('./app/routes/login');
-var users = require('./app/routes/users');
 var task = require('./app/routes/task');
 
 var app = express();
@@ -30,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'app/public')));
 app.use('/', index);
 app.use('/admin', admin);
 app.use('/login', login);
-app.use('/users', users);
 app.use('/task', task);
 
 //数据库连接
