@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
         if (err) {
             return console.error(err);
         } else {
-            console.log('taskNotice:' + taskNotice.content);
+            console.log('taskNotice:' + taskNotice);
         }
         taskController.taskList(req,function (err, taskList) {
             if (err) {
