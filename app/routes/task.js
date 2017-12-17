@@ -9,6 +9,8 @@ router.get('/', function (req, res, next) {
     taskNoticeController.findTaskNotice( function (err,taskNotice) {
         if (err) {
             return console.error(err);
+        } else if (taskNotice == null){
+          taskNotice = "";
         } else {
             console.log('taskNotice:' + taskNotice);
         }

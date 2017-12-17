@@ -15,9 +15,10 @@ html(lang='zh-CN')
           a(href='/admin') 管理后台
     div(class='row col-sm-1')
     div(class='row col-sm-9')
-      h1 公告
+      h2 公告
       b
-        p(style='color:red') #{taskNotice.content}
+        -if (taskNotice);
+          p(style='color:red') #{taskNotice.content}
         br
       ul(class="nav nav-tabs nav-justified")
         li(role="presentation",class="active")
@@ -73,24 +74,8 @@ html(lang='zh-CN')
                   p #{task.mark}
                 div(class='col-row-2')
                   -var taskId = task._id;
-                  //a(href='/task/update?taskId='+ taskId, class='btn btn-success') 完成
-
-  //div(class='modal fade bs-example-modal-lg',tabindex='-1',role='dialog',aria-labelledby='domeModal')
-    div(class='modal-dialog modal-lg',role='document')
-      form(action='/task/update' method='post')
-        div(class='modal-content')
-          div(class='modal-header')
-            button(type='button',class='close',data-dismiss='modal',aria-label='Close')
-              span(aria-hidden='true') &times
-            h4(class='modal-title') 备注信息
-          div(class='modal-body')
-            textarea(type='text',class='from-control',rows='4',name='mark',style='width:100%')
-          div(class='modal-footer')
-            button(type='button',class='btn btn-default',data-dismiss='modal') 取消
-            button(type='submit',class='btn btn-primary active') 提交
-          //a(href='/task/update?taskId=' + taskId + '&mark=' + doneMark,type='button',class='btn btn-primary') 提交
 
 
 
 
-  include ../footer
+        include ../footer
