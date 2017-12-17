@@ -42,19 +42,19 @@ html(lang='zh-CN')
                   -var taskId = task._id;
                     button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
                     div(class='modal fade bs-example-modal-lg',tabindex='-1',role='dialog',aria-labelledby='domeModal')
-                    div(class='modal-dialog modal-lg',role='document')
-                      form(action='/task/update' method='post')
-                        div(class='modal-content')
-                          div(class='modal-header')
-                            button(type='button',class='close',data-dismiss='modal',aria-label='Close')
-                              span(aria-hidden='true') &times
-                            h4(class='modal-title') 备注信息
-                          div(class='modal-body')
-                            input(type='hidden',name='_id',value=taskId)
-                            textarea(type='text',class='from-control',rows='4',name='mark',style='width:100%')
-                          div(class='modal-footer')
-                            button(type='button',class='btn btn-default',data-dismiss='modal') 取消
-                            button(type='submit',class='btn btn-primary active') 提交
+                      div(class='modal-dialog modal-lg',role='document')
+                        form(action='/task/update' method='post')
+                          div(class='modal-content')
+                            div(class='modal-header')
+                              button(type='button',class='close',data-dismiss='modal',aria-label='Close')
+                                span(aria-hidden='true') &times
+                              h4(class='modal-title') 备注信息
+                            div(class='modal-body')
+                              input(type='hidden',name='_id',value=taskId)
+                              textarea(type='text',class='from-control',rows='4',name='mark',style='width:100%')
+                            div(class='modal-footer')
+                              button(type='button',class='btn btn-default',data-dismiss='modal') 取消
+                              button(type='submit',class='btn btn-primary active') 提交
 
               //a(href='/task/update?taskId=' + taskId, class='btn btn-success') 完成
       div(id='done')
