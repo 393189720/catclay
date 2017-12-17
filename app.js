@@ -32,7 +32,7 @@ app.use('/login', login);
 app.use('/task', task);
 
 //数据库连接
-mongoose.connect("mongodb://localhost:27017/catclay");
+mongoose.connect("mongodb://localhost:27017/catclay",{useMongoClient: true});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
