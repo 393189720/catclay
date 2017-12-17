@@ -8,7 +8,7 @@ var TaskNoticeSchema = new Schema({
   //--unique: true 唯一性设置
   title: {type: String },
   content: { type: String },
-  createTime: { type: Date,default:Date.now() }
+  updateTime: { type: Date,default:Date.now() }
 });
 var TaskNotice = mongoose.model('TaskNotice', TaskNoticeSchema);
 

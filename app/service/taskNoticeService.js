@@ -44,12 +44,17 @@ exports.saveTaskNotice = function (req, callback) {
 exports.updateTaskNotice = function (req, callback) {
     var taskNotice = new taskNoticeModel({
         title: 'notice',
-        content: req.body.notice
+        content: req.body.notice,
+        updateTime: Date.now()
     });
     var taskNoticeJson = {title: 'notice',
-        content: req.body.notice
+        content: req.body.notice,
+        updateTime: Date.now()
     };
     taskNoticeModel.update({title: 'notice'}, taskNoticeJson, function (err, docs) {
+        if (err){
+            taskNoticeModel.save();
+        }
         callback(err, docs);
     });
 };
