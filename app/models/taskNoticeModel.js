@@ -11,7 +11,5 @@ var TaskNoticeSchema = new Schema({
   createTime: { type: Date,default:Date.now() }
 });
 var TaskNotice = mongoose.model('TaskNotice', TaskNoticeSchema);
-// TaskNotice.plugin('BaseModel');
-// TaskNotice.indent({createTime:-1});
 
 module.exports = TaskNotice;

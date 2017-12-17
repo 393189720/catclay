@@ -6,7 +6,7 @@ html(lang='zh-CN')
     include header
   body
     div(class='container')
-      form(action='/task/notice/add' method='post')
+      form(action='/task/notice/update' method='post')
         h3 编辑公告
         textarea(type='text',name='notice',class='form-control',rows='3')
         button(type='submit',class='btn btn-primary active') 提交
@@ -18,3 +18,5 @@ html(lang='zh-CN')
           input(name="title")
         textarea(type='text',name='content',class='form-control',rows='3')
         button(type='submit',class='btn btn-primary active') 提交
+
+    include footer

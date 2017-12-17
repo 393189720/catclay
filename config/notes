@@ -2,3 +2,5 @@
 mongoose中schema对应的mongodb中的集合为全部小写加’s‘;
 for example:
     schema:taskNoticeSchema-->collection:tasknotices
+
+2.mongoose 查询

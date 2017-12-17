@@ -1,7 +1,43 @@
 //Created by clay on 2017/12/11.
 extends ../layout
 
+script(src='./javascripts/task/task.js')
 block content
   h1 今日公告
-  p(name='notice')
+  p #{taskNotice.content}
 
+  ul(class="nav nav-tabs nav-justified")
+    li(role="presentation",class="active")
+      a(href="#todo") 待  办
+    li(role="presentation")
+      a(href="#done") 已完成
+  div(id='todo')
+    h4 待  办
+    ul(class='list-group')
+      - each task in taskList
+       - if (task.status == 0)
+        li(class='list-group-item',style='background-color: white')
+          div(class='row')
+            div(class='col-xs-10')
+              h5 #{task.title}
+              h6 #{task.createTime}
+              p #{task.content}
+            div(class='col-row-2')
+              -var taskId = task._id;
+              a(href='/task/update?taskId=' + taskId, class='btn btn-success') 完成
+
+  div(id='done')
+    h4 已完成
+    ul(class='list-group')
+      - each task in taskList
+       - if (task.status == 1)
+        li(class='list-group-item',style='background-color: lightskyblue')
+          div(class='row')
+            div(class='col-xs-10')
+              h5 #{task.title}
+              h6 #{task.createTime}
+              p #{task.content}
+            div(class='col-row-2')
+              -var taskId = task._id;
+              //a(href='/task/update?taskId='+ taskId, class='btn btn-success') 完成
+include ../footer
