@@ -12,7 +12,7 @@ exports.findTaskNotice = function (callback) {
         if (err) {
             console.error(err);
         } else {
-            console.log('docs:' + docs.content);
+            console.log('docs:' + docs);
         }
         callback(err, docs);
     });
