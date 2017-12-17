@@ -26,6 +26,7 @@ exports.addTask = function(req, callback){
     var task = new taskModel({
         title: req.body.title,
         content: req.body.content,
+        mark: "",
         status:0
     });
     task.save(function (err, docs) {
@@ -43,17 +44,16 @@ exports.addTask = function(req, callback){
  * @param callback
  */
 exports.updateTask = function(req, callback){
-    var title    = req.body.title;
-    var content  = req.body.t_content;
-    var _id = req.params.tid;
-    var tab      = req.body.tab;
+    var _id = req.body._id;
+    var mark = req.body.mark;
 
     var task = new taskModel({
-        status:1
+        status:1,
+        mark:mark
     });
-    console.log('_id:'+ req.query.taskId);
+    console.log('_id:'+ _id);
 
-    task.update({_id:req.query.taskId},{$set:{status:1}},function (err, docs) {
+    taskModel.update({_id:_id},{$set:{status:1,mark:mark}},function (err, docs) {
     // task.findByIdAndUpdate(req.query.taskId,{$set:{task:task}},task,function (err, docs) {
         if (err) {
             console.error(err);

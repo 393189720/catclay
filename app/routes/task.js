@@ -52,8 +52,8 @@ router.post('/notice/update', function (req, res, next) {
 });
 
 /* get task update listing. */
-router.get('/update', function (req, res, next) {
-    taskController.updateTaskStatus(req, function (err, result) {
+router.post('/update', function (req, res, next) {
+    taskController.updateTask(req, function (err, result) {
         if (err) {
             console.log(err);
         } else {
