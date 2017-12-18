@@ -15,7 +15,7 @@ exports.findTaskList = function(callback){
       console.log('docs:' + docs);
     }
     callback(err,docs);
-  }).sort('-createTime');
+  }).sort('-updateTime');
 };
 
 /**
@@ -27,7 +27,8 @@ exports.addTask = function(req, callback){
         title: req.body.title,
         content: req.body.content,
         mark: "",
-        status:0
+        status:0,
+        updateTime: Date.now()
     });
     task.save(function (err, docs) {
         if (err) {
@@ -49,11 +50,12 @@ exports.updateTask = function(req, callback){
 
     var task = new taskModel({
         status:1,
-        mark:mark
+        mark:mark,
+        updateTime: Date.now()
     });
     console.log('_id:'+ _id);
 
-    taskModel.update({_id:_id},{$set:{status:1,mark:mark}},function (err, docs) {
+    taskModel.update({_id:_id},{$set:{status:1,mark:mark, updateTime: Date.now()}},function (err, docs) {
     // task.findByIdAndUpdate(req.query.taskId,{$set:{task:task}},task,function (err, docs) {
         if (err) {
             console.error(err);

@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
             } else {
                 console.log('taskList:' + taskList);
             }
-            res.render('task/task', {taskNotice:taskNotice,taskList:taskList});
+            res.render('/', {taskNotice:taskNotice,taskList:taskList});
         });
         // res.render('task/task', JSON.stringify(taskNotice));
     });
@@ -35,7 +35,7 @@ router.post('/add', function (req, res, next) {
         } else {
             console.log('保存成功：' + result);
         }
-        res.redirect('/task');
+        res.redirect('/');
         // res.render('admin', {title: '管理后台'});
     });
 });
@@ -48,7 +48,7 @@ router.post('/notice/update', function (req, res, next) {
         } else {
             console.log('编辑成功：' + result);
         }
-        res.redirect('/task');
+        res.redirect('/');
         // res.render('admin',{title: '管理后台'});
     });
 });
@@ -61,7 +61,7 @@ router.post('/update', function (req, res, next) {
         } else {
             console.log('保存成功：' + result);
         }
-        res.redirect('/task');
+        res.redirect('/');
     });
 });
 
