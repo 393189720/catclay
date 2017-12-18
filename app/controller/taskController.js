@@ -21,6 +21,12 @@ exports.addTask = function(req, callback){
   });
 };
 
+exports.removeTask = function(req, callback){
+    taskService.removeTask(req, function (err,taskNotice) {
+        callback(err, taskNotice) ;
+    });
+};
+
 exports.taskList = function(req, callback){
     taskService.findTaskList(function (err,taskNotice) {
         callback(err, taskNotice) ;

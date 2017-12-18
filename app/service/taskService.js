@@ -41,6 +41,23 @@ exports.addTask = function(req, callback){
 };
 
 /**
+ * 删除任务
+ * @param callback
+ */
+exports.removeTask = function(req, callback){
+    var _id = req.query.taskId;
+    taskModel.findByIdAndRemove({_id:_id},function (err, docs) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('docs:' + docs);
+        }
+        callback(err, docs);
+    });
+};
+
+
+/**
  * 更新任务
  * @param callback
  */

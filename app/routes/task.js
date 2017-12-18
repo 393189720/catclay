@@ -65,5 +65,17 @@ router.post('/update', function (req, res, next) {
     });
 });
 
+/* get task update listing. */
+router.get('/delete', function (req, res, next) {
+    taskController.removeTask(req, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('保存成功：' + result);
+        }
+        res.redirect('/');
+    });
+});
+
 
 module.exports = router;

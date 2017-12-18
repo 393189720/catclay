@@ -71,8 +71,8 @@ html(lang='zh-CN')
                     b 备注：
                       p #{task.mark}
                   div(class='col-row-2')
-                    -var taskId = task._id;
-
+                    -var _Id = task._id;
+                      a(href='/task/delete?taskId=' + _Id, class='btn btn-danger') 删除
 
 
 
