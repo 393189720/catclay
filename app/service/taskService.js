@@ -12,7 +12,7 @@ exports.findTaskList = function(callback){
         if (err) {
             console.error(err);
         }else {
-            console.log('docs:' + docs);
+            // console.log('docs:' + docs);
         }
         callback(err,docs);
     }).sort('-updateTime');
@@ -81,7 +81,7 @@ exports.updateTask = function(req, callback){
         if (err) {
             console.error(err);
         } else {
-            console.log('docs:' + docs);
+            // console.log('docs:' + docs);
         }
         callback(err, docs);
     });

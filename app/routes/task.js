@@ -12,13 +12,13 @@ router.get('/', function (req, res, next) {
         } else if (taskNotice == null){
           taskNotice = "";
         } else {
-            console.log('taskNotice:' + taskNotice);
+            // console.log('taskNotice:' + taskNotice);
         }
         taskController.taskList(req,function (err, taskList) {
             if (err) {
                 return console.error(err);
             } else {
-                console.log('taskList:' + taskList);
+                // console.log('taskList:' + taskList);
             }
             res.redirect('/');
             // res.render('/index', {taskNotice:taskNotice,taskList:taskList});
