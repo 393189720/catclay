@@ -30,31 +30,44 @@ html(lang='zh-CN')
                     ul(class='list-group')
                       - each task in taskList
                        - if (task.status == 0)
-                        li(class='list-group-item',style='background-color: white')
-                            div(class='row')
-                                div(class='col-xs-10')
-                                    h5 #{task.title}
-                                    h6
-                                        small #{task.createTime}
-                                    b 详情:
-                                        p #{task.content}
-                                div(class='col-row-2')
-                                  -var taskId = task._id;
-                                    button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
-                        div(class='modal fade bs-example-modal-lg',tabindex='-1',role='dialog',aria-labelledby='domeModal')
-                            div(class='modal-dialog modal-lg',role='document')
-                                form(action='/task/update' method='post')
-                                    div(class='modal-content')
-                                        div(class='modal-header')
-                                            button(type='button',class='close',data-dismiss='modal',aria-label='Close')
-                                                span(aria-hidden='true') &times
-                                            h4(class='modal-title') 备注信息
-                                        div(class='modal-body')
-                                            input(type='hidden',name='_id',value=taskId)
-                                            textarea(type='text',class='from-control',rows='4',name='mark',style='width:100%')
-                                        div(class='modal-footer')
-                                            button(type='button',class='btn btn-default',data-dismiss='modal') 取消
-                                            button(type='submit',class='btn btn-primary active') 提交
+                          - if (task.lever == 0)
+                              li(class='list-group-item',style='background-color: white')
+                                  div(class='row')
+                                      div(class='col-xs-10')
+                                           h5 #{task.title}
+                                           h6
+                                               small #{task.createTimeAgo()}
+                                           b 详情:
+                                               p #{task.content}
+                                      div(class='col-row-2')
+                                        -var taskId = task._id;
+                                          button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
+                          - if (task.lever == 1)
+                              li(class='list-group-item',style='background-color: #E8ADAA')
+                                div(class='row')
+                                    div(class='col-xs-10')
+                                        h5(style='color: red') 加急：#{task.title}
+                                        h6
+                                            small #{task.createTimeAgo()}
+                                        b 详情:
+                                            p #{task.content}
+                                    div(class='col-row-2')
+                                      -var taskId = task._id;
+                                        button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
+                              div(class='modal fade bs-example-modal-lg',tabindex='-1',role='dialog',aria-labelledby='domeModal')
+                                div(class='modal-dialog modal-lg',role='document')
+                                    form(action='/task/update' method='post')
+                                        div(class='modal-content')
+                                            div(class='modal-header')
+                                                button(type='button',class='close',data-dismiss='modal',aria-label='Close')
+                                                    span(aria-hidden='true') &times
+                                                h4(class='modal-title') 备注信息
+                                            div(class='modal-body')
+                                                input(type='hidden',name='_id',value=taskId)
+                                                textarea(type='text',class='from-control',rows='4',name='mark',style='width:100%')
+                                            div(class='modal-footer')
+                                                button(type='button',class='btn btn-default',data-dismiss='modal') 取消
+                                                button(type='submit',class='btn btn-primary active') 提交
 
                         //a(href='/task/update?taskId=' + taskId, class='btn btn-success') 完成
                 div(class='tab-pane fade',id='done')
@@ -67,7 +80,7 @@ html(lang='zh-CN')
                                 div(class='col-xs-10')
                                     h5 #{task.title}
                                     h6
-                                        small #{task.createTime}
+                                        small #{task.createTimeAgo()}
                                     b 详情:
                                         p #{task.content}
                                     b 备注：

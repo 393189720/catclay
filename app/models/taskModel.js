@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-
 var BaseModel = require('./baseModel');
 
 var TaskSchema = new Schema({
@@ -15,8 +14,8 @@ var TaskSchema = new Schema({
     top: {type: Boolean, default: false}, // 置顶帖
     updateTime: {type: Date, default: Date.now},
 });
-var Task = mongoose.model('Task', TaskSchema);
 TaskSchema.plugin(BaseModel);
 TaskSchema.index({createTime: -1});
+var Task = mongoose.model('Task', TaskSchema);
 
 module.exports = Task;

@@ -5,11 +5,11 @@
 var tools = require('../utils/tools');
 
 module.exports = function (schema) {
-  schema.methods.createTime = function () {
+  schema.methods.createTimeAgo = function () {
     return tools.formatDate(this.createTime, true);
   };
 
-  schema.methods.updateTime = function () {
+  schema.methods.updateTimeAgo = function () {
     return tools.formatDate(this.updateTime, true);
   };
 };

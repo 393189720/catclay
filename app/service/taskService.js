@@ -26,8 +26,10 @@ exports.addTask = function(req, callback){
     var task = new taskModel({
         title: req.body.title,
         content: req.body.content,
+        lever: req.body.taskLever,
         mark: "",
         status:0,
+        createTime: Date.now(),
         updateTime: Date.now()
     });
     task.save(function (err, docs) {
