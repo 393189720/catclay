@@ -8,6 +8,8 @@ var TaskSchema = new Schema({
     title: {type: String},
     content: {type: String},
     mark: {type: String},
+    shopName: {type: String},
+    orderNo: {type: String},
     createTime: {type: Date, default: Date.now()},
     status: {type: Number, default: 0},//0：待办；1：已完成；
     lever: {type: Number,default: 0},// 0：默认；1：急

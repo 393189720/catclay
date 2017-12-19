@@ -27,6 +27,8 @@ exports.addTask = function(req, callback){
         title: req.body.title,
         content: req.body.content,
         lever: req.body.taskLever,
+        shopName: req.body.shopName,
+        orderNo: req.body.orderNo,
         mark: "",
         status:0,
         createTime: Date.now(),

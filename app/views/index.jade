@@ -35,8 +35,10 @@ html(lang='zh-CN')
                                   div(class='row')
                                       div(class='col-xs-10')
                                            h5 #{task.title}
+                                           h6 店铺：#{task.shopName}
                                            h6
-                                               small #{task.createTimeAgo()}
+                                               small 发布时间:#{task.createTimeAgo()}
+                                           h6 订单号：#{task.orderNo}
                                            b 详情:
                                                p #{task.content}
                                       div(class='col-row-2')
@@ -47,8 +49,10 @@ html(lang='zh-CN')
                                 div(class='row')
                                     div(class='col-xs-10')
                                         h5(style='color: red') 加急：#{task.title}
+                                        h6 店铺：#{task.shopName}
                                         h6
-                                            small #{task.createTimeAgo()}
+                                            small 发布时间:#{task.createTimeAgo()}
+                                        h6 订单号：#{task.orderNo}
                                         b 详情:
                                             p #{task.content}
                                     div(class='col-row-2')

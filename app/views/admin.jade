@@ -10,7 +10,7 @@ html(lang='zh-CN')
         li(role='presentation')
           a(href='/') 待   办
         li(class='active',role='presentation',id='admin')
-          a(href='/admin') 管理后台
+          a(href='/admin') 添加
     div(class='row col-sm-1')
     div(class='row col-sm-9')
       div(class='container')
@@ -23,16 +23,28 @@ html(lang='zh-CN')
         form(action='/task/add' method='post')
           h3 编辑任务
           label 标题:
-            input(name="title")
+            input(name="title",placeholder="请输入标题")
           br
           label(class='radio-inline')
-              input(type='radio',name='taskLever',id="optionsRadios1",value="0",checked)
-              |普通
+              input(type='radio',name='taskLever',value="0",checked)
+              | 普通
           label(class='radio-inline')
-              input(type='radio',name='taskLever',id="optionsRadios2",value="1")
-              |加急
+              input(type='radio',name='taskLever',value="1")
+              | 加急
+          br
+          label 店铺:
+          label(class='radio-inline')
+              input(type='radio',name='shopName',value="胖友出品",checked)
+              | 胖友出品
+          label(class='radio-inline')
+              input(type='radio',name='shopName',value="小巫盖盖")
+              | 小巫盖盖
+          br
+          label 订单号:
+            input(name="orderNo",placeholder="请输入订单号")
+          br
 
           textarea(type='text',name='content',class='form-control',rows='3')
           button(type='submit',class='btn btn-primary active') 提交
 
-    include footer
+        include footer
