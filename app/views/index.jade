@@ -35,12 +35,13 @@ html(lang='zh-CN')
                                   div(class='row')
                                       div(class='col-xs-10')
                                            h5 #{task.title}
-                                           h6 店铺：#{task.shopName}
+                                           h6 店铺：
+                                               small #{task.shopName}
                                            h6
                                                small 发布时间:#{task.createTimeAgo()}
                                            h6 订单号：#{task.orderNo}
-                                           b 详情:
-                                               p #{task.content}
+                                           h6 详情:
+                                           p #{task.content}
                                       div(class='col-row-2')
                                         -var taskId = task._id;
                                           button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
@@ -49,12 +50,13 @@ html(lang='zh-CN')
                                 div(class='row')
                                     div(class='col-xs-10')
                                         h5(style='color: red') 加急：#{task.title}
-                                        h6 店铺：#{task.shopName}
+                                        h6 店铺：
+                                            small #{task.shopName}
                                         h6
                                             small 发布时间:#{task.createTimeAgo()}
                                         h6 订单号：#{task.orderNo}
-                                        b 详情:
-                                            p #{task.content}
+                                        h6 详情:
+                                        p #{task.content}
                                     div(class='col-row-2')
                                       -var taskId = task._id;
                                         button(type='button',class='btn btn-primary',data-toggle='modal',data-target='.bs-example-modal-lg') 完成
@@ -83,14 +85,15 @@ html(lang='zh-CN')
                             div(class='row')
                                 div(class='col-xs-10')
                                     h5 #{task.title}
-                                    h6 店铺：#{task.shopName}
+                                    h6 店铺：
+                                        small #{task.shopName}
                                     h6
                                        small 更新时间:#{task.updateTimeAgo()}
                                     h6 订单号：#{task.orderNo}
-                                    b 详情:
-                                        p #{task.content}
-                                    b 备注：
-                                        p #{task.mark}
+                                    h6 详情:
+                                    p #{task.content}
+                                    h6 完成备注：
+                                    p #{task.mark}
                                 div(class='col-row-2')
                                   -var _Id = task._id;
                                     a(href='/task/delete?taskId=' + _Id, class='btn btn-danger') 删除
