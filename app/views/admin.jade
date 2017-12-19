@@ -24,7 +24,7 @@ html(lang='zh-CN')
           label 标题:
             input(name="title",placeholder="请输入标题")
           br
-          label 标题:
+          label 状态:
             label(class='radio-inline')
               input(type='radio',name='taskLever',value="0",checked)
               | 普通
@@ -44,7 +44,7 @@ html(lang='zh-CN')
             input(name="orderNo",placeholder="请输入订单号")
           br
 
-          textarea(type='text',name='content',class='form-control',rows='3')
+          textarea(type='text',name='content',class='form-control',rows='5')
           button(type='submit',class='btn btn-primary active') 提交
 
         include footer
