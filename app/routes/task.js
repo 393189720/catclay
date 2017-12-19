@@ -20,12 +20,12 @@ router.get('/', function (req, res, next) {
             } else {
                 console.log('taskList:' + taskList);
             }
-            res.render('task/task', {taskNotice:taskNotice,taskList:taskList});
+            res.redirect('/');
+            // res.render('/index', {taskNotice:taskNotice,taskList:taskList});
         });
         // res.render('task/task', JSON.stringify(taskNotice));
     });
 });
-
 
 /* post notice listing. */
 router.post('/add', function (req, res, next) {
@@ -50,6 +50,18 @@ router.post('/notice/update', function (req, res, next) {
         }
         res.redirect('/task');
         // res.render('admin',{title: '管理后台'});
+    });
+});
+
+/* get task update listing. */
+router.get('/delete', function (req, res, next) {
+    taskController.removeTask(req, function (err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('保存成功：' + result);
+        }
+        res.redirect('/');
     });
 });
 

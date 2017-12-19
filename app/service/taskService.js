@@ -8,14 +8,14 @@ var taskModel = require('../models/taskModel');
  * @param callback
  */
 exports.findTaskList = function(callback){
-  taskModel.find(function (err, docs) {
-    if (err) {
-      console.error(err);
-    }else {
-      console.log('docs:' + docs);
-    }
-    callback(err,docs);
-  }).sort('-createTime');
+    taskModel.find(function (err, docs) {
+        if (err) {
+            console.error(err);
+        }else {
+            console.log('docs:' + docs);
+        }
+        callback(err,docs);
+    }).sort('-updateTime');
 };
 
 /**
@@ -27,7 +27,8 @@ exports.addTask = function(req, callback){
         title: req.body.title,
         content: req.body.content,
         mark: "",
-        status:0
+        status:0,
+        updateTime: Date.now()
     });
     task.save(function (err, docs) {
         if (err) {
@@ -40,6 +41,23 @@ exports.addTask = function(req, callback){
 };
 
 /**
+ * 删除任务
+ * @param callback
+ */
+exports.removeTask = function(req, callback){
+    var _id = req.query.taskId;
+    taskModel.findByIdAndRemove({_id:_id},function (err, docs) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log('docs:' + docs);
+        }
+        callback(err, docs);
+    });
+};
+
+
+/**
  * 更新任务
  * @param callback
  */
@@ -49,12 +67,13 @@ exports.updateTask = function(req, callback){
 
     var task = new taskModel({
         status:1,
-        mark:mark
+        mark:mark,
+        updateTime: Date.now()
     });
     console.log('_id:'+ _id);
 
-    taskModel.update({_id:_id},{$set:{status:1,mark:mark}},function (err, docs) {
-    // task.findByIdAndUpdate(req.query.taskId,{$set:{task:task}},task,function (err, docs) {
+    taskModel.update({_id:_id},{$set:{status:1,mark:mark, updateTime: Date.now()}},function (err, docs) {
+        // task.findByIdAndUpdate(req.query.taskId,{$set:{task:task}},task,function (err, docs) {
         if (err) {
             console.error(err);
         } else {
@@ -82,34 +101,3 @@ exports.updateTaskStatus = function(req, callback){
         callback(err, docs);
     });
 };
-
-
-
-/**
- * 公共find方法 非关联查找
- * @param model
- * @param conditions
- * @param fields 查找时限定的条件，如顺序，某些字段不查找等
- * @param options
- * @param callback
- */
-exports.findData =function(model,conditions,fields,options,callback) {
-
-    model.find(conditions, fields, options, function(error, result){
-        if(error) {
-            console.log(error);
-            callback({success: 0, flag: "find data fail"});
-        } else {
-            if(result.length!=0){
-                console.log('find success!');
-                callback({success: 1, flag: "find data success",result:result});
-            }
-            else{
-                console.log('find fail:no this data!');
-                callback({success: 0, flag: 'find fail:no this data!'});
-            }
-
-        }
-
-    });
-}
