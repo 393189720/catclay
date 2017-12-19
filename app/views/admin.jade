@@ -19,16 +19,16 @@ html(lang='zh-CN')
           textarea(type='text',name='notice',class='form-control',rows='3')
           button(type='submit',class='btn btn-primary active') 提交
         br
-        br
         form(action='/task/add' method='post')
           h3 编辑任务
           label 标题:
             input(name="title",placeholder="请输入标题")
           br
-          label(class='radio-inline')
+          label 标题:
+            label(class='radio-inline')
               input(type='radio',name='taskLever',value="0",checked)
               | 普通
-          label(class='radio-inline')
+            label(class='radio-inline')
               input(type='radio',name='taskLever',value="1")
               | 加急
           br
