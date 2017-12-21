@@ -11,6 +11,7 @@ var index = require('./app/routes/index');
 var admin = require('./app/routes/admin');
 var login = require('./app/routes/login');
 var task = require('./app/routes/task');
+var memo = require('./app/routes/memo');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use('/', index);
 app.use('/admin', admin);
 app.use('/login', login);
 app.use('/task', task);
+app.use('/memo', memo);
 
 //数据库连接
 mongoose.connect("mongodb://localhost:27017/catclay",{useMongoClient: true});

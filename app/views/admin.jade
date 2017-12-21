@@ -9,6 +9,8 @@ html(lang='zh-CN')
       ul(class='nav nav-pills nav-stacked')
         li(role='presentation')
           a(href='/') 待   办
+        li(role='presentation')
+          a(href='/memo') 备忘录
         li(class='active',role='presentation',id='admin')
           a(href='/admin') 添加
     div(class='row col-sm-1')
@@ -17,6 +19,11 @@ html(lang='zh-CN')
         form(action='/task/notice/update' method='post')
           h3 编辑公告
           textarea(type='text',name='notice',class='form-control',rows='3')
+          button(type='submit',class='btn btn-primary active') 提交
+        br
+        form(action='/memo/add' method='post')
+          h3 添加备忘录
+          textarea(type='text',name='memo',class='form-control',rows='3')
           button(type='submit',class='btn btn-primary active') 提交
         br
         form(action='/task/add' method='post')

@@ -1,0 +1,49 @@
+//Created by clay on 2017/12/11.
+doctype html
+html(lang='zh-CN')
+    head
+        title #{title}
+        include header
+    body
+        div(class='row col-sm-2')
+            ul(class='nav nav-pills nav-stacked')
+                li(role='presentation')
+                    a(href='/') 待 办
+                li(class='active',role='presentation',id='memo')
+                    a(href='/memo') 备忘录
+                li(role='presentation',id='admin')
+                    a(href='/admin') 添 加
+        div(class='row col-sm-1')
+        div(class='row col-sm-9')
+            h2 备忘录
+            //ul(id='myTab',class="nav nav-tabs")
+                li(class="active")
+                    a(href="#todo" data-toggle='tab') 待  办
+                li
+                    a(href="#done" ,data-toggle='tab') 已完成
+            
+            div(id='myTabContent',class='tab-content')
+                div(class='tab-pane fade in active',id='todo')
+                    ul(class='list-group')
+                      - each memo in memoList
+                        - var memoId = memo._id
+                          - if (memo.status == 0)
+                              li(class='list-group-item',style='background-color: white')
+                                  div(class='row')
+                                      div(class='col-xs-10')
+                                           h5 #{memo.content}
+                                           h6
+                                               small 发布时间:#{memo.createTimeAgo()}
+                                      div(class='col-row-2')
+                                          a(href='/memo/update?memoId=' + memoId+'&status=1', class='btn btn-success') 完成
+                          - if (memo.status == 1)
+                              li(class='list-group-item',style='background-color: white')
+                                  div(class='row')
+                                      div(class='col-xs-10')
+                                           h5 #{memo.content}
+                                           h6
+                                               small 发布时间:#{memo.createTimeAgo()}
+                                      div(class='col-row-2')
+                                               a(href='/memo/delete?memoId=' + memoId, class='btn btn-danger') 删除
+
+            include footer
