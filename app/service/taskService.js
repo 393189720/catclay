@@ -15,7 +15,7 @@ exports.findTaskList = function(callback){
             // console.log('docs:' + docs);
         }
         callback(err,docs);
-    }).sort('-updateTime');
+    }).sort('-updateTime').limit(1);
 };
 
 /**
@@ -28,7 +28,7 @@ exports.addTask = function(req, callback){
         content: req.body.content,
         lever: req.body.taskLever,
         shopName: req.body.shopName,
-        orderNo: req.body.orderNo,
+        orderNo: req.body.orderNo.trim(),
         mark: "",
         status:0,
         createTime: Date.now(),

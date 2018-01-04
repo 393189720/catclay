@@ -31,6 +31,9 @@ router.get('/', function (req, res, next) {
 router.post('/add', function (req, res, next) {
     taskController.addTask(req, function (err, result) {
         if (err) {
+            if (err.code == 11000){
+                console.log("插入失败，数据不能重复插入！");
+            }
             console.log(err);
         } else {
             console.log('保存成功：' + result);
